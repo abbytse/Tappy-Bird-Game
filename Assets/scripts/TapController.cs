@@ -4,9 +4,15 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class TapController : MonoBehaviour{
+
+    public delegate void PlayerDelegate();
+    public static event PlayerDelegate OnPlayerDied;
+    public static event PlayerDelegate OnPlayerScored;
+
     public float tapForce = 10; 
     public float tiltSmooth = 5; 
     public Vector3 startPos;
+    
     Rigidbody2D rigidbody; 
     Quaternion downRotation; 
     Quaternion forwardRotation; 
@@ -31,13 +37,15 @@ public class TapController : MonoBehaviour{
 
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "ScoreZone"){
-            //register a score event 
+            //register a score event
+            OnPlayerScored(); //event sent to GameManager 
             //play a sound 
         }
         if(col.gameObject.tag == "DeadZone"){
             //freeze bird 
             rigidbody.simulated = false;
             //register a dead event 
+            OnPlayerDied(); //event sent to GameManager
             //play a sound 
         }
     }

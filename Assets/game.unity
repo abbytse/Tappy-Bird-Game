@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 210233052}
   - component: {fileID: 210233051}
   - component: {fileID: 210233050}
+  - component: {fileID: 210233053}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -429,6 +430,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &210233053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210233049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdaa687f99b142dd9356dda485ed7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPage: {fileID: 2040390706}
+  gameOverPage: {fileID: 639193259}
+  countdownPage: {fileID: 1545785621}
+  scoreText: {fileID: 1372052710}
 --- !u!1 &392741025
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +526,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 392741028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 210233053}
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &392741028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,7 +936,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1082671938}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 210233053}
+        m_MethodName: ConfirmGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1082671938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,6 +1074,7 @@ GameObject:
   - component: {fileID: 1400967945}
   - component: {fileID: 1400967947}
   - component: {fileID: 1400967946}
+  - component: {fileID: 1400967948}
   m_Layer: 5
   m_Name: countDown
   m_TagString: Untagged
@@ -1102,6 +1142,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400967944}
   m_CullTransparentMesh: 0
+--- !u!114 &1400967948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400967944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06c4f2fac05b4d509416fcb61642c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1431731976
 GameObject:
   m_ObjectHideFlags: 0
