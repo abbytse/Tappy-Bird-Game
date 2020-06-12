@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour{
 
     void OnCountdownFinished(){
         SetPageState(PageState.None);
-        OnGameStarted();
+        OnGameStarted(); //event sent TapController  
         score = 0;
         gameOver = false;
     }
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour{
 
     public void ConfirmGameOver(){
         //activated when replay button is hit 
-        //OnGameOverConfirmed(); //event 
+        OnGameOverConfirmed(); //event sent TapController  
         scoreText.text = "0";
         SetPageState(PageState.Start);
     }

@@ -12,21 +12,44 @@ public class TapController : MonoBehaviour{
     public float tapForce = 10; 
     public float tiltSmooth = 5; 
     public Vector3 startPos;
-    
+   
     Rigidbody2D rigidbody; 
     Quaternion downRotation; 
     Quaternion forwardRotation; 
+
+    GameManager game;
 
     // Start is called before the first frame update
     void Start(){
         rigidbody = GetComponent<Rigidbody2D>();
         downRotation = Quaternion.Euler(0,0,-90);
         forwardRotation = Quaternion.Euler(0,0,35);
-        //rigidbody.simulated = false;
+        game = GameManager.Instance;
+    }
+
+    void OnEnable(){
+        GameManager.OnGameStarted += OnGameStarted;
+        GameManager.OnGameOverConfirmed += OnGameOverConfirmed;
+    }
+
+    void OnDisable(){
+        GameManager.OnGameStarted -= OnGameStarted;
+        GameManager.OnGameOverConfirmed -= OnGameOverConfirmed;
+    }
+
+    void OnGameStarted(){
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.simulated = true;
+    }
+
+    void OnGameOverConfirmed(){
+        transform.position = startPos;
+        transform.rotation = Quaternion.identity;
     }
 
     // Update is called once per frame
     void Update(){
+        if(game.GameOver) return;
         if(Input.GetMouseButtonDown(0)){
             transform.rotation = forwardRotation;
             rigidbody.velocity = Vector3.zero;
